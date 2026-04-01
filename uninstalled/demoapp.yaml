@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demoapp
+  namespace: argocd
+spec:
+  project: smart-home
+  source:
+    repoURL: https://github.com/dalethestirling/agentic-gitops-template.git
+    targetRevision: HEAD
+    path: catalog/demoapp
+    helm:
+      valueFiles:
+      - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demoapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

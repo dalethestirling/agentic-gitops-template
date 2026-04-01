@@ -1,0 +1,10 @@
+# Standard Kubernetes/Helm .gitignore
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.bak
+charts/
+Chart.lock
+tmp/
+.agents/.env
